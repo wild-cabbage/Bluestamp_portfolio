@@ -7,7 +7,9 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 <!--- Anything between these symbols will not render on the published site -->
 ```
 
-| **Engineer** | **School** | **Area of Interest** | **Grade** |
+|**EVERYTHING WAS COMMENTED OUT BECAUSE I WAS NOT DONE**|
+
+<!---| **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Irene L | Stratford Preparatory Blackford | electrical engineering, mechanical engineering, and/or computer science | Rising 7th
 
@@ -89,4 +91,4 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here.
+To watch the BSE tutorial on how to create a portfolio, click here. -->
