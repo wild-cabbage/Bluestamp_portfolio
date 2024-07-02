@@ -1,22 +1,20 @@
-# Project Name Here
+# Three Joint Arm
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 
 <!--- You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions: -->
-```HTML 
+
 <!--- This is an HTML comment in Markdown -->
 <!--- Anything between these symbols will not render on the published site -->
-```
 
-|**EVERYTHING WAS COMMENTED OUT BECAUSE I WAS NOT DONE**|
 
-<!---| **Engineer** | **School** | **Area of Interest** | **Grade** |
+| **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Irene L | Stratford Preparatory Blackford | electrical engineering, mechanical engineering, and/or computer science | Rising 7th
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
+<!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**-->
 
-![Headstone Image](logo.svg) 
-<!---copy image uploaded to gh part, not main -->
+![Headstone Image](cabbage.jpeg) 
+<!---copy image uploaded to gh part, not main; just put the name :) -->
   
 # Final Milestone
 
@@ -65,8 +63,8 @@ Here's where you'll put your code. The syntax below places it into a block of co
 ```c++
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
+  Serial.begin(15200);
+  Serial.println("yes, i exist; thank you very much");
 }
 
 void loop() {
@@ -74,6 +72,9 @@ void loop() {
 
 }
 ```
+
+# Starter Project
+[https://www.youtube.com/embed/qZ0iKe8ecOE?si=rf3ahFnXm_ps0_Ei](https://www.youtube.com/embed/qZ0iKe8ecOE?si=rf3ahFnXm_ps0_Ei)
 
 # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
@@ -91,4 +92,4 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here. -->
+To watch the BSE tutorial on how to create a portfolio, click here. 
