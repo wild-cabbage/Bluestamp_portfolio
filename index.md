@@ -16,6 +16,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 # Cabbage
 ![Headstone Image](cabbage.jpeg) 
 <!---copy image uploaded to gh part, not main; just put the name :) -->
+Cabbage is pretty edible.
   
 # Final Milestone
 
