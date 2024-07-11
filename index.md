@@ -40,11 +40,13 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 ### Progress
 
-From the first to the second milestone, I have finished the assembly of the three joint arm. There is still code on it from last time, and I modified it to test the four servos after assembly. 
+From the first to the second milestone, I have finished the assembly of the three joint arm. I used the code from last milestone to test the servos. 
+
+
 
 ### Challenges
 
-A particularly [unfortunate] challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees (when I was testing). I replaced it with a longer screw, and it stopped underrotating.
+A challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees (when I was testing). I replaced it with a longer screw, and it stopped underrotating.
 
 <!--- 
 
@@ -73,7 +75,8 @@ The first milestone was to have the joystick's movement control the servo's move
 
 ### Challenges
 
-The servos that I was using weren't really working for about a day when I first started testing, and this was resolved after a few restarts and test codes. The delays that made the motion somewhat more saturated was freezing the Serial monitor, so I had to make the delays about 50 ms (which isn't exactly problematic right now but could be in the future as the servos will be harder to control). There are not any significant problems that will carry on into future milestones, but perhaps in future milestones instead of going to a specific degree, there may need to be increments between the degrees (for example pos[ition of servo] += 20).
+1. The servos that I was using weren't really working initially with a test code that was moving the servo to 90 degrees and it moved about 10 degrees. I restarted the Arduino a few times and then it started working; it could be a software issue that fixed itself, and I need to monitor it in the future. 
+2.The delays in my starting code froze the Serial monitor--it would send approximately three values and then freeze for about thirty seconds, then send three more very slowly. I shortened delays about 50 ms (instead of 100 ms). This problem can carry onto the third milestone, as making the servo turn a certain degree is more difficult with less control. 
 
 Afterwards I should be able to continue with assembling the three joint arm and then coding all four servos. 
 
