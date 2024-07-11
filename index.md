@@ -150,6 +150,6 @@ The RGB LED kit uses three sliders, or linear potentiometers, to control the int
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://circuitdigest.com/microcontroller-projects/controlling-multiple-servo-motors-with-arduino)
-<!--- - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
+<!--- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/) -->
 
