@@ -75,7 +75,8 @@ The first milestone was to have the joystick's movement control the servo's move
 
 ### Challenges
 
-1. The servos that I was using weren't really working initially with a test code that was moving the servo to 90 degrees and it moved about 10 degrees. I restarted the Arduino a few times and then it started working; it could be a software issue that fixed itself, and I need to monitor it in the future. 
+1. The servos that I was using weren't really working initially with a test code that was moving the servo to 90 degrees and it moved about 10 degrees. I restarted the Arduino a few times and then it started working; it could be a software issue that fixed itself, and I need to monitor it in the future.
+    
 2.The delays in my starting code froze the Serial monitor--it would send approximately three values and then freeze for about thirty seconds, then send three more very slowly. I shortened delays about 50 ms (instead of 100 ms). This problem can carry onto the third milestone, as making the servo turn a certain degree is more difficult with less control. 
 
 Afterwards I should be able to continue with assembling the three joint arm and then coding all four servos. 
