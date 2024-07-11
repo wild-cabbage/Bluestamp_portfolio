@@ -90,10 +90,9 @@ int pos = 0;
 
 void setup() {
 
-   //pinMode (3, INPUT); //joystick position
 
   servo_one.attach(7); //in case I need another servo
-  //pinMode (7, OUTPUT); //pos of servo
+
 
   Serial.begin(9600);
   servo_one.write(0);
