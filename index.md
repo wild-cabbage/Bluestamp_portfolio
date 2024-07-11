@@ -10,7 +10,7 @@
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Irene L | Stratford Preparatory Blackford | electrical engineering, mechanical engineering, and/or computer science | Rising 7th
+| Irene L | Stratford Preparatory Blackford | Electrical Engineering, Mechanical Engineering, and/or Computer Science | Rising/Incoming 7th
 
 <!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**-->
 
