@@ -16,18 +16,149 @@
 
 ![Headstone Image](Irene_L_headshot.png) 
 <!---copy image uploaded to gh part, not main; just put the name :) -->
+
+<!--- ## Modifications -->
   
-<!--- # Final Milestone
+## Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c7WFhJLDVuY?si=f4WyBtUir1y9YiWi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+### Progress
+For my third (and final) milestone, I have programmed the robot and added electrical tape on the servos. 
 
-For your final milestone, explain the outcome of your project. Key details to include are:
+### Challenges and Triumphs
+  My most prominent challenge at BSE are probably dealing with the arm's erratic movement during testing--the arm would sometimes accelerate much faster than initially planned, and it would pull at the wires of the servos until the servo's wire...broke. I did not account for that initially, and when the program started the joints would move around mindlessly until it reached 90 degrees, and an increment of 20 each turn was a bit large. 
+
+  Great...triumphs...at BSE so far are probably finally getting the servo to work after restarting the Arduino, finishing the assembly, and then finishing the coding.
+
+### What I learned
+  At BSE, I learned a lot about mechanical engineering and some about software, as well as about how to solder and use breadboards (for my first modification). I also learned about Arduino's built-in resistor (that isn't triggered unless the command "PULLUP" is used after "INPUT" and other commands that were necessary to make my project. I probably also learned (or at least practiced) to focus for longer periods of time and to commit to a single project without hesitating for hours. 
+
+### In the future
+  In the future, I hope to engage in the process of other projects that require as much--if not more--commitment and focus, as well as learning more about engineering in general. I hope to gain engineering skills from experience and expertise, and career-wise--hopefully the above will help create a path for such a future. 
+
+<!--- For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE -->
+
+### Code
+```c++
+#include <Servo.h>          
+
+Servo servo1; //red        
+Servo servo2; //red
+Servo servo3; //blue
+Servo servo4; //blue
+
+int joystick_x = A0;                                                  
+int joystick_y = A1;
+int joystickblue_x = A2;
+int joystickblue_y = A3;             
+
+int pos_x;                 
+int pos_y;  
+int posblue_x;
+int posblue_y;              
+
+int pos1 = 90;        
+int pos2 = 90;
+int pos3 = 90;
+int pos4 = 90;
+
+
+void setup() {
+  Serial.begin(9600);
+  servo1.attach(4);          
+  servo2.attach(5);
+  servo3.attach(6);
+  servo4.attach(7);
+
+  servo1.write(pos1);           
+  servo2.write(pos2);
+  servo3.write(pos3);
+  servo4.write(pos4);
+
+  pinMode(joystick_x, INPUT);                     
+  pinMode(joystick_y, INPUT);    
+  pinMode(joystickblue_x, INPUT);
+  pinMode(joystickblue_y, INPUT);                  
+}
+
+void loop () {
+  pos_x = analogRead(joystick_x);  
+  pos_y = analogRead(joystick_y);  
+
+  posblue_x = analogRead(joystickblue_x);
+  posblue_y = analogRead(joystickblue_y);                 
+
+  if (pos_x < 300) {      
+    if (pos1 >= 10) {  
+      pos1 = pos1 - 20;
+      servo1.write (pos1);
+      delay (50);
+    }
+  }
+
+  if (pos_x > 700) {
+    if (pos1 <= 180) {
+      pos1 = pos1 + 20;
+      servo1.write (pos1);
+      delay(50);
+    }
+  }
+
+    if (pos_y < 300) {      
+    if (pos2 >= 10) {  
+      pos2 = pos2 - 20;
+      servo2.write (pos2);
+      delay (50);
+    }
+  }
+
+  if (pos_y > 700) {
+    if (pos2 <= 180) {
+      pos2 = pos2 + 20;
+      servo2.write (pos2);
+      delay(50);
+    }
+  }
+
+  if (posblue_x < 300) {     
+    if (pos3 >= 10) { 
+      pos3 = pos3 - 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+  if (posblue_x > 700) {
+    if (pos3 <= 180) {  
+      pos3 = pos3 + 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+    if (posblue_y < 300) {     
+    if (pos4 >= 10) { 
+      pos4 = pos4 - 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+
+  if (posblue_y > 700) {
+    if (pos4 <= 180) {  
+      pos4 = pos4 + 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+}
+
+```
 
 
 
@@ -140,9 +271,6 @@ Don't forget to place the link of where to buy each component inside the quotati
 ## Starter Project: RGB LED Slider kit
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qZ0iKe8ecOE?si=rf3ahFnXm_ps0_Ei" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-
-
-
 The RGB LED kit uses three sliders, or linear potentiometers, to control the intensity and color of the LED. Linear potentiometers control resistance through linear motion, and there are essentially three smaller LEDs in a dome. Each slider/potentiometer sends voltage to the LED/LEDs, and this causes different brightness and colors. This RGB LED kit is essentially soldering practice, and the person soldering can be burnt because metal conducts heat quite well (and the sliders are metal), however this can be resolved by using something to prop it up. 
 
 <!---elaborate-->
@@ -150,8 +278,5 @@ The RGB LED kit uses three sliders, or linear potentiometers, to control the int
 
 
 # Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://circuitdigest.com/microcontroller-projects/controlling-multiple-servo-motors-with-arduino)
-<!--- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/) -->
 
