@@ -17,8 +17,372 @@
 ![Headstone Image](Irene_L_headshot.png) 
 <!---copy image uploaded to gh part, not main; just put the name :) -->
 
-<!--- ## Modifications -->
+## Modifications 
+
+### Progress
+#### Modifications
+1. I added a button to set the claw to 90 or 0 degrees depending on its position
+2. I made the arm bluetooth controlled through an app I created that sends a signal for different buttons pressed.
+
+#### App Interface
+![drawing](interface.png)
+The buttons send numbers to the Arduino, which processes the information, matches it to a servo, and has it run. "Servo1left" (the button taking in information for servo1 (in the Arduino code) sends 0, for example, and other buttons send different numbers. 
+
+#### Code
+##### Modification 1 Code:
+``` c++
+#include <Servo.h>
+Servo servo;
+int pos = 0;
+
+int inpin = 10;
+
+int q; 
+
+void setup() {
+  // put your setup code here, to run once:
+  servo.attach(7);
+  servo.write(0);
+  pinMode(inpin, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  q = digitalRead(inpin);
+  Serial.println(q);
+  if (q == LOW) {
+    pos = pos + 90;
+    servo.write(pos);
+
+    if (pos >= 160) {
+       pos = 0;
+       servo.write(pos);
+    } 
+
+    delay(700);
+
+  }
+}
+```
+##### Final Code:
+Note(s): There are a lot of comments
+
+``` c++
+#include <Servo.h> 
+#include <SoftwareSerial.h>         
+
+Servo servo1; //red        
+Servo servo2; //red
+Servo servo3; //blue
+Servo servo4; //blue
+
+int joystick_x = A0;                                                  
+int joystick_y = A1;
+int joystickblue_x = A2;
+int joystickblue_y = A3;             
+
+int pos_x;                 
+int pos_y;  
+int posblue_x;
+int posblue_y;              
+
+int pos1 = 90;        
+int pos2 = 90;
+int pos3 = 90;
+int pos4 = 0;
+
+int inpin = 10; //button
+int q; //tracks high/low
+
+//int state = 0; 
+
+#define rxPin 3
+#define txPin 2
+
+SoftwareSerial BTSerial(rxPin, txPin); 
+
+void setup() {
+  Serial.begin(9600);
+  servo1.attach(4);          
+  servo2.attach(5);
+  servo3.attach(6);
+  servo4.attach(7);
+
+  servo1.write(pos1);           
+  servo2.write(pos2);
+  servo3.write(pos3);
+  servo4.write(pos4);
+
+  pinMode(joystick_x, INPUT);                     
+  pinMode(joystick_y, INPUT);    
+  pinMode(joystickblue_x, INPUT);
+  pinMode(joystickblue_y, INPUT);     
+
+  pinMode(inpin, INPUT_PULLUP); 
+
+  pinMode(rxPin, INPUT);
+  pinMode (txPin, OUTPUT);
+
+  BTSerial.begin(9600);            
+}
+
+void loop () {
+  q = digitalRead(inpin);
+  //Serial.println("value: ");
+  //Serial.print(q);
+
+  if (q == LOW) {
+    pos4 = pos4 + 90;
+    servo4.write(pos4);
+    Serial.println("low");
+
+    if (pos4 >= 160) {
+      pos4 = 0;
+      servo4.write(pos4);
+    } 
+
+    delay(700);
+  } 
   
+
+  /*
+  if(BTSerial.available() > 0){ // Checks whether data is comming from the serial port
+      state = BTSerial.read(); // Reads the data from the serial por
+  }
+  */
+  while (BTSerial.available() > 0) {
+    int move = BTSerial.read(); // is the variable for what is coming through
+
+    if(move == 0) { // Checks whether data is comming from the serial port
+      if (pos1 > 20) {
+        pos1 -= 20;
+      }
+      else {
+        pos1 = 0;
+      }
+      //pos1 = pos1 - 20;
+      servo1.write(pos1);
+      Serial.println(move);
+    }
+
+    if(move == 1) { // Checks whether data is comming from the serial port
+      if (pos1 < 160) {
+        pos1 += 20;
+      }
+      else {
+        pos1 = 180;
+      }
+      //pos1 = pos1 + 20;
+      servo1.write(pos1);
+      Serial.println(move);
+    }
+
+    if(move == 2) { // Checks whether data is comming from the serial port
+      //pos2 = pos2 + 20;
+      if (pos2 < 160) {
+        pos2 += 20;
+      }
+      else {
+        pos2 = 180;
+      }
+      servo2.write(pos2);
+      Serial.println(move);
+    }
+    
+    if(move == 3) { // Checks whether data is comming from the serial port
+      //pos2 = pos2 + 20;
+      if (pos2 > 20) {
+        pos2 -= 20;
+      }
+      else {
+        pos2 = 0;
+      }
+      servo2.write(pos2);
+      Serial.println(move);
+    }
+
+    if(move == 4) { // Checks whether data is comming from the serial port
+      //pos3 = pos3 + 20;
+      if (pos3 < 160) {
+        pos3 += 20;
+      }
+      else {
+        pos3 = 180;
+      }
+      servo3.write(pos3);
+      Serial.println(move);
+    }
+
+    if(move == 5) { // Checks whether data is comming from the serial port
+      //pos3 = pos3 - 20;
+      if (pos3 > 20) {
+        pos3 -= 20;
+      }
+      else {
+        pos3 = 0;
+      }
+      servo3.write(pos3);
+      Serial.println(move);
+    }
+
+    if(move == 6) { // Checks whether data is comming from the serial port
+      //pos4 = pos4 + 10;
+      if (pos4 < 170) {
+        pos4 += 10;
+      }
+      else {
+        pos4 = 180;
+      }
+      servo4.write(pos4);
+      Serial.println(move);
+    }
+
+    if(move == 7) { // Checks whether data is comming from the serial port
+      //pos4 = pos4 - 10;
+      if (pos4 > 10) {
+        pos4 -= 10;
+      }
+      else {
+        pos4 = 0;
+      }
+      servo4.write(pos4);
+      Serial.println(move);
+    }
+  }
+  /*
+  if(BTSerial.read() == 0) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos1 = pos1 - 20;
+    servo1.write(pos1);
+    Serial.println(pos1);
+  }
+
+  if(BTSerial.read() == 1) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos1 = pos1 + 20;
+    servo1.write(pos1);
+    Serial.println(pos1);
+  }
+
+  if(BTSerial.read() == 2) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos2 = pos2 + 20;
+    servo2.write(pos2);
+  }
+  
+  if(BTSerial.read() == 3) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos2 = pos2 + 20;
+    servo2.write(pos2);
+  }
+
+  if(BTSerial.read() == 4) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos3 = pos3 + 20;
+    servo3.write(pos3);
+  }
+
+  if(BTSerial.read() == 5) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos3 = pos3 - 20;
+    servo3.write(pos3);
+  }
+
+  if(BTSerial.read() == 6) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos4 = pos4 - 20;
+    servo4.write(pos4);
+  }
+
+  if(BTSerial.read() == 7) { // Checks whether data is comming from the serial port
+    state = BTSerial.read(); // Reads the data from the serial port
+    pos4 = pos4 - 10;
+    servo4.write(pos4);
+  }
+  */
+/*
+
+  pos_x = analogRead(joystick_x);  
+  pos_y = analogRead(joystick_y);  
+
+  posblue_x = analogRead(joystickblue_x);
+  posblue_y = analogRead(joystickblue_y);                 
+
+  if (pos_x < 300) {      
+    if (pos1 >= 10) {  
+      pos1 = pos1 - 20;
+      servo1.write (pos1);
+      delay (50);
+    }
+  }
+
+  if (pos_x > 700) {
+    if (pos1 <= 180) {
+      pos1 = pos1 + 20;
+      servo1.write (pos1);
+      delay(50);
+    }
+  }
+
+    if (pos_y < 300) {      
+    if (pos2 >= 10) {  
+      pos2 = pos2 - 20;
+      servo2.write (pos2);
+      delay (50);
+    }
+  }
+
+  if (pos_y > 700) {
+    if (pos2 <= 180) {
+      pos2 = pos2 + 20;
+      servo2.write (pos2);
+      delay(50);
+    }
+  }
+
+  if (posblue_x < 300) {     
+    if (pos3 >= 10) { 
+      pos3 = pos3 - 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+  if (posblue_x > 700) {
+    if (pos3 <= 180) {  
+      pos3 = pos3 + 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+    if (posblue_y < 300) {     
+    if (pos4 >= 10) { 
+      pos4 = pos4 - 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+
+  if (posblue_y > 700) {
+    if (pos4 <= 180) {  
+      pos4 = pos4 + 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+  */
+}
+
+```
+
+### Challenges
+  A challenge that I faced while doing these modifications was the consistently disconnecting HC-05 bluetooth module. I went back and tested the arm again and then found out that the arm wasn't doing very well--and that it was only acting like that when the batteries were not giving power. After measuring with a multimeter, I found that most batteries had enough (around 1.5 or 1.6 V), but the connector was not receiving anything. I resoldered the wires, measured, and after reconnection found that the HC-05 was not randomly disconnecting anymore. 
+
+  
+
+
 ## Final Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/c7WFhJLDVuY?si=f4WyBtUir1y9YiWi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -160,8 +524,6 @@ void loop () {
 
 ```
 
-
-
 ## Second Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6ezD6wMuPNM?si=VSegnzb60y6GBvxW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -262,9 +624,17 @@ void loop() {
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. -->
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Arduino Nano | Powers the project | $24.90 | <a href="https://store.arduino.cc/products/arduino-nano"> Link </a> |
-<!---| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |-->
+| Arduino Nano | Runs the project | $24.90 | <a href="https://store.arduino.cc/products/arduino-nano"> Link </a> |
+| LK Cokoino Robot Arm for Arduino | Project materials| $49.99 | <a href="https://www.amazon.com/LK-COKOINO-Compliment-Engineering-Technology/dp/B081FG1JQ1"> Link </a> |
+| [5] AA Batteries | Powers the project | depends on the number | <a href="https://www.amazon.com/Best-Sellers-AA-Batteries/zgbs/hpc/389577011"> Link </a> |
+| 5 x 1.5V AA Battery Holder| Holds the battery | $1.62 | <a href="https://www.amazon.com/Battery-Holder-Storage-Boxes-Black/dp/B07KNT1TH4"> Link </a> |
+| HC-05 bluetooth module | Bluetooth module | $9.99 | <a href="https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=pd_lpo_sccl_1/142-5829447-2312401?pd_rd_w=qDMl6&content-id=amzn1.sym.4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_p=4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_r=YSHB0HD1HVSMWPN5AVHS&pd_rd_wg=QR2Do&pd_rd_r=8cebe64a-0d65-4b9e-a195-f79c015bee72&pd_rd_i=B01G9KSAF6&psc=1"> Link </a> |
+| Button | Sets the top servo to 90 or 0 degrees | $4.99 for 100 | <a href="https://www.amazon.com/DAOKI-Miniature-Momentary-Tactile-Quality/dp/B01CGMP9GY?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A30Y6WWS77DGEW&th=1"> Link </a> 
+| Female to female, male to female wires, possibly male to male wires | Connection | $5.38 for 120 (40 each) | <a href="https://www.amazon.com/Elegoo-EL-CP-004-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=pd_lpo_sccl_2/142-5829447-2312401?pd_rd_w=nwQwG&content-id=amzn1.sym.4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_p=4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_r=0JC8VP7D36ANZKTY218Y&pd_rd_wg=RmX27&pd_rd_r=692d8d0f-a2dd-42cd-813e-e1e3c4d4b757&pd_rd_i=B01EV70C78&psc=1"> Link </a> 
+
+
+
+
 
 
 
