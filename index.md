@@ -19,17 +19,15 @@
 
 ## Modifications 
 
-### Progress
-#### Modifications
-1. I added a button to set the claw to 90 or 0 degrees depending on its position
-2. I made the arm bluetooth controlled through an app I created that sends a signal for different buttons pressed.
+### Modification 1
 
-#### App Interface
-![drawing](interface.png)
-The buttons send numbers to the Arduino, which processes the information, matches it to a servo, and has it run. "Servo1left" (the button taking in information for servo1 (in the Arduino code) sends 0, for example, and other buttons send different numbers. 
+#### Progress
+I used a button to set the claw to either 90 + current position or 0 degrees.
+
+#### Challenges
+I had to use a breadboard because there were no buttons that could go directly on the pins available, and I was not particularly familiar with breadboards, but I figured out how it worked. 
 
 #### Code
-##### Modification 1 Code:
 ``` c++
 #include <Servo.h>
 Servo servo;
@@ -65,8 +63,38 @@ void loop() {
   }
 }
 ```
-##### Final Code:
-Note(s): There are a lot of comments
+
+### Modification 2
+
+#### Progress
+I used an HC-05 as a bluetooth module and created an app that controls the robotic arm.
+
+#### App
+
+![drawing](interface.png)
+
+
+The buttons send numbers to the Arduino, which processes the information, matches it to a servo, and has it run. "Servo1left" (the button taking in information for servo1 (in the Arduino code) sends 0, for example, and other buttons send different numbers. 
+
+#### App Code
+![drawing](codebluetooth.png)
+
+
+This above code lets the module connect to bluetooth. When the "connect" button is pressed, the available devices to connect will show up, and if connected will let the phone control the arm. 
+
+![drawing](angleifs.png)
+
+
+THis above code sends numbers to the Arduino. The number is stored in a variable (as seen in the code below), and depending on what the number stored in the variable is, the desired servo will move a specific increment (of 20 degrees or of 10 degrees, depending on which servo is being moved) in the desired direction. 
+
+
+
+
+#### Challenges
+At first, when I first started testing the bluetooth between the phone and HC-05, the connection broke within the first five seconds, but the arm was working pretty well, so even though my research said it was that the HC-05 wasn't getting enough power, I didn't measure the power the batteries were giving. Then when I tested it the next day (since when I encountered the problem it was very late and I had to troubleshoot the next day), I noticed that the arm was wrapping itself in its own wires, a behavior that I observed every time it wasn't getting enough power from the batteries. First I measured the power coming from each individual battery, and they were sending enough; then I measured whether or not power was going through the coils, and power was going through. Lastly I measured whether or not the plastic connector was receiving anything, and it wasn't receiving anything. I realized the solders were probably broken, even though earlier when I looked at it the solders looked fine. I still cut the wires where it was soldered and then resoldered the wires together, and the problem was solved. 
+
+
+#### Final Code:
 
 ``` c++
 #include <Servo.h> 
@@ -250,129 +278,7 @@ void loop () {
       Serial.println(move);
     }
   }
-  /*
-  if(BTSerial.read() == 0) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos1 = pos1 - 20;
-    servo1.write(pos1);
-    Serial.println(pos1);
-  }
-
-  if(BTSerial.read() == 1) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos1 = pos1 + 20;
-    servo1.write(pos1);
-    Serial.println(pos1);
-  }
-
-  if(BTSerial.read() == 2) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos2 = pos2 + 20;
-    servo2.write(pos2);
-  }
-  
-  if(BTSerial.read() == 3) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos2 = pos2 + 20;
-    servo2.write(pos2);
-  }
-
-  if(BTSerial.read() == 4) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos3 = pos3 + 20;
-    servo3.write(pos3);
-  }
-
-  if(BTSerial.read() == 5) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos3 = pos3 - 20;
-    servo3.write(pos3);
-  }
-
-  if(BTSerial.read() == 6) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos4 = pos4 - 20;
-    servo4.write(pos4);
-  }
-
-  if(BTSerial.read() == 7) { // Checks whether data is comming from the serial port
-    state = BTSerial.read(); // Reads the data from the serial port
-    pos4 = pos4 - 10;
-    servo4.write(pos4);
-  }
-  */
-/*
-
-  pos_x = analogRead(joystick_x);  
-  pos_y = analogRead(joystick_y);  
-
-  posblue_x = analogRead(joystickblue_x);
-  posblue_y = analogRead(joystickblue_y);                 
-
-  if (pos_x < 300) {      
-    if (pos1 >= 10) {  
-      pos1 = pos1 - 20;
-      servo1.write (pos1);
-      delay (50);
-    }
-  }
-
-  if (pos_x > 700) {
-    if (pos1 <= 180) {
-      pos1 = pos1 + 20;
-      servo1.write (pos1);
-      delay(50);
-    }
-  }
-
-    if (pos_y < 300) {      
-    if (pos2 >= 10) {  
-      pos2 = pos2 - 20;
-      servo2.write (pos2);
-      delay (50);
-    }
-  }
-
-  if (pos_y > 700) {
-    if (pos2 <= 180) {
-      pos2 = pos2 + 20;
-      servo2.write (pos2);
-      delay(50);
-    }
-  }
-
-  if (posblue_x < 300) {     
-    if (pos3 >= 10) { 
-      pos3 = pos3 - 20;
-      servo3.write(pos3);
-      delay(70);
-    }
-  }
-
-  if (posblue_x > 700) {
-    if (pos3 <= 180) {  
-      pos3 = pos3 + 20;
-      servo3.write(pos3);
-      delay(70);
-    }
-  }
-
-    if (posblue_y < 300) {     
-    if (pos4 >= 10) { 
-      pos4 = pos4 - 10;
-      servo4.write(pos4);
-      delay(70);
-    }
-  }
-
-  if (posblue_y > 700) {
-    if (pos4 <= 180) {  
-      pos4 = pos4 + 10;
-      servo4.write(pos4);
-      delay(70);
-    }
-  }
-  */
+ 
 }
 
 ```
