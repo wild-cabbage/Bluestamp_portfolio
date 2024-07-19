@@ -36,10 +36,7 @@
 #### Progress
 I used a button to set the claw to either 90 + current position or 0 degrees.
 
-#### Challenges
-I had to use a breadboard because there were no buttons that could go directly on the pins available, and I was not particularly familiar with breadboards, but I figured out how it worked. 
-
-#### Code
+```c++
 ``` c++
 #include <Servo.h>
 Servo servo;
@@ -75,6 +72,13 @@ void loop() {
   }
 }
 ```
+
+#### Challenges
+I had to use a breadboard because there were no buttons that could go directly on the pins available, and I was not particularly familiar with breadboards, but I figured out how it worked. 
+
+#### Code 
+Note: This is the final code for this modification, and it includes the previous code.
+
 
 ### Modification 2
 
