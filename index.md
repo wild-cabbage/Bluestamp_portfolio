@@ -14,8 +14,20 @@
 
 <!---**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**-->
 
+
 ![Headstone Image](Irene_L_headshot.png) 
 <!---copy image uploaded to gh part, not main; just put the name :) -->
+
+## Overview
+- Starter Project: RGB Slider Kit
+- Milestone 1: Tested Joystick and Servos
+- Milestone 2: Completed Assembly
+- Milestone 3: Completed Programming
+- Modification 1: Specific function
+- Modification 2: Bluetooth Connection
+
+
+
 
 ## Modifications 
 
