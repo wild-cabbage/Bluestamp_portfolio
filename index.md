@@ -439,11 +439,14 @@ void loop () {
 
 From the first to the second milestone, I have finished the assembly of the three joint arm. I used the code from last milestone to test the servos. 
 
+#### Schematics
+![drawing](schematicservo.png)
+
 
 
 ### Challenges
 
-A challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees (when I was testing). I replaced it with a longer screw, and it stopped underrotating.
+A challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees when I was testing. Initially I thought it was too short, but I asked around and people said it was fine, so I screwed it in and it miraculously fit. However, that did become a problem. I replaced it with a longer screw, and it started workign correctly.
 
 <!--- 
 
@@ -531,11 +534,17 @@ Don't forget to place the link of where to buy each component inside the quotati
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
 | Arduino Nano | Runs the project | $24.90 | <a href="https://store.arduino.cc/products/arduino-nano"> Link </a> |
+|:--:|:--:|:--:|:--:|
 | LK Cokoino Robot Arm for Arduino | Project materials| $49.99 | <a href="https://www.amazon.com/LK-COKOINO-Compliment-Engineering-Technology/dp/B081FG1JQ1"> Link </a> |
+|:--:|:--:|:--:|:--:|
 | [5] AA Batteries | Powers the project | depends on the number | <a href="https://www.amazon.com/Best-Sellers-AA-Batteries/zgbs/hpc/389577011"> Link </a> |
+|:--:|:--:|:--:|:--:|
 | 5 x 1.5V AA Battery Holder| Holds the battery | $1.62 | <a href="https://www.amazon.com/Battery-Holder-Storage-Boxes-Black/dp/B07KNT1TH4"> Link </a> |
+|:--:|:--:|:--:|:--:|
 | HC-05 bluetooth module | Bluetooth module | $9.99 | <a href="https://www.amazon.com/DSD-TECH-HC-05-Pass-through-Communication/dp/B01G9KSAF6/ref=pd_lpo_sccl_1/142-5829447-2312401?pd_rd_w=qDMl6&content-id=amzn1.sym.4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_p=4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_r=YSHB0HD1HVSMWPN5AVHS&pd_rd_wg=QR2Do&pd_rd_r=8cebe64a-0d65-4b9e-a195-f79c015bee72&pd_rd_i=B01G9KSAF6&psc=1"> Link </a> |
+|:--:|:--:|:--:|:--:|
 | Button | Sets the top servo to 90 or 0 degrees | $4.99 for 100 | <a href="https://www.amazon.com/DAOKI-Miniature-Momentary-Tactile-Quality/dp/B01CGMP9GY?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A30Y6WWS77DGEW&th=1"> Link </a> 
+|:--:|:--:|:--:|:--:|
 | Female to female, male to female wires, possibly male to male wires | Connection | $5.38 for 120 (40 each) | <a href="https://www.amazon.com/Elegoo-EL-CP-004-Multicolored-Breadboard-arduino/dp/B01EV70C78/ref=pd_lpo_sccl_2/142-5829447-2312401?pd_rd_w=nwQwG&content-id=amzn1.sym.4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_p=4c8c52db-06f8-4e42-8e56-912796f2ea6c&pf_rd_r=0JC8VP7D36ANZKTY218Y&pd_rd_wg=RmX27&pd_rd_r=692d8d0f-a2dd-42cd-813e-e1e3c4d4b757&pd_rd_i=B01EV70C78&psc=1"> Link </a> 
 
 
