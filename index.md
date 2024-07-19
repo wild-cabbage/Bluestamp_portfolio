@@ -37,7 +37,6 @@
 I used a button to set the claw to either 90 + current position or 0 degrees.
 
 ```c++
-``` c++
 #include <Servo.h>
 Servo servo;
 int pos = 0;
@@ -78,6 +77,142 @@ I had to use a breadboard because there were no buttons that could go directly o
 
 #### Code 
 Note: This is the final code for this modification, and it includes the previous code.
+
+``` c++
+#include <Servo.h>          
+
+Servo servo1; //red        
+Servo servo2; //red
+Servo servo3; //blue
+Servo servo4; //blue
+
+int joystick_x = A0;                                                  
+int joystick_y = A1;
+int joystickblue_x = A2;
+int joystickblue_y = A3;             
+
+int pos_x;                 
+int pos_y;  
+int posblue_x;
+int posblue_y;              
+
+int pos1 = 0;        
+int pos2 = 90;
+int pos3 = 90;
+int pos4 = 0;
+
+int inpin = 10; //button
+int q; //tracks high/low
+
+
+void setup() {
+  Serial.begin(9600);
+  servo1.attach(4);          
+  servo2.attach(5);
+  servo3.attach(6);
+  servo4.attach(7);
+
+  servo1.write(pos1);           
+  servo2.write(pos2);
+  servo3.write(pos3);
+  servo4.write(pos4);
+
+  pinMode(joystick_x, INPUT);                     
+  pinMode(joystick_y, INPUT);    
+  pinMode(joystickblue_x, INPUT);
+  pinMode(joystickblue_y, INPUT);     
+
+  pinMode(inpin, INPUT_PULLUP);             
+}
+
+void loop () {
+  q = digitalRead(inpin);
+  Serial.println(q);
+
+  if (q == LOW) {
+    pos4 = pos4 + 90;
+    servo4.write(pos4);
+
+    if (pos4 >= 160) {
+      pos4 = 0;
+      servo4.write(pos4);
+    }
+
+    delay(700);
+  }
+
+  pos_x = analogRead(joystick_x);  
+  pos_y = analogRead(joystick_y);  
+
+  posblue_x = analogRead(joystickblue_x);
+  posblue_y = analogRead(joystickblue_y);                 
+
+  if (pos_x < 300) {      
+    if (pos1 >= 10) {  
+      pos1 = pos1 - 20;
+      servo1.write (pos1);
+      delay (50);
+    }
+  }
+
+  if (pos_x > 700) {
+    if (pos1 <= 180) {
+      pos1 = pos1 + 20;
+      servo1.write (pos1);
+      delay(50);
+    }
+  }
+
+    if (pos_y < 300) {      
+    if (pos2 >= 10) {  
+      pos2 = pos2 - 20;
+      servo2.write (pos2);
+      delay (50);
+    }
+  }
+
+  if (pos_y > 700) {
+    if (pos2 <= 180) {
+      pos2 = pos2 + 20;
+      servo2.write (pos2);
+      delay(50);
+    }
+  }
+
+  if (posblue_x < 300) {     
+    if (pos3 >= 10) { 
+      pos3 = pos3 - 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+  if (posblue_x > 700) {
+    if (pos3 <= 180) {  
+      pos3 = pos3 + 20;
+      servo3.write(pos3);
+      delay(70);
+    }
+  }
+
+    if (posblue_y < 300) {     
+    if (pos4 >= 10) { 
+      pos4 = pos4 - 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+
+  if (posblue_y > 700) {
+    if (pos4 <= 180) {  
+      pos4 = pos4 + 10;
+      servo4.write(pos4);
+      delay(70);
+    }
+  }
+}
+
+```
 
 
 ### Modification 2
