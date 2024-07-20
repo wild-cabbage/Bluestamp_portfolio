@@ -1,4 +1,4 @@
-# Three Joint Arm
+e# Three Joint Arm
 <!--- Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails! -->
 <!--- The three joint arm is a mechanical arm "connected" by servos and controlled using a joystick. -->
 
@@ -39,7 +39,7 @@
 ### Modification 1
 
 #### Progress
-I used a button to set the claw to either 90 + current position or 0 degrees.
+I used a button to set the claw to either 90 degrees + current position or 0 degrees if the resulting degree is greater than 180 degrees.
 
 ```c++
 #include <Servo.h>
@@ -714,5 +714,5 @@ The RGB LED kit uses three sliders, or linear potentiometers, to control the int
 
 
 # Other Resources/Examples
-- [Example 1](https://circuitdigest.com/microcontroller-projects/controlling-multiple-servo-motors-with-arduino)
+- [Example 1](https://howtomechatronics.com/tutorials/arduino/arduino-and-hc-05-bluetooth-module-tutorial/)
 
