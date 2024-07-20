@@ -599,7 +599,7 @@ From the first to the second milestone, I have finished the assembly of the thre
 
 ### Challenges
 
-A challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees when I was testing. Initially I thought it was too short, but I asked around and people said it was fine, so I screwed it in and it miraculously fit. However, that did become a problem. I replaced it with a longer screw, and it started workign correctly.
+A challenge was that the screw that was in the base (continuous) servo was too short, and it had only a few threads inside the servo, so the servo underrotated every time it was supposed to move to 180 degrees when I was testing. Initially I thought it was too short, but I asked around and people said it was fine, so I screwed it in and it miraculously fit. However, that did become a problem. I replaced it with a longer screw, and it started working correctly.
 
 <!--- 
 
