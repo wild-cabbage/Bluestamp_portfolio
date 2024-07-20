@@ -19,12 +19,12 @@
 <!---copy image uploaded to gh part, not main; just put the name :) -->
 
 ## Overview
-- Starter Project: RGB Slider Kit
-- Milestone 1: Tested Joystick and Servos
-- [Milestone 2: Completed Assembly](#final-milestone)
-- Milestone 3: Completed Programming
-- Modification 1: Specific function
-- Modification 2: Bluetooth Connection
+- [Starter Project: RGB Slider Kit](#starter-project)
+- [Milestone 1: Tested Joystick and Servos](#first-milestone)
+- [Milestone 2: Completed Assembly](#second-milestone)
+- [Milestone 3: Completed Programming](#final-milestone)
+- [Modification 1: Specific function](#modification-1)
+- [Modification 2: Bluetooth Connection](#modification-2)
 
 
 
@@ -701,7 +701,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 
 
-## Starter Project: RGB LED Slider kit
+## Starter Project
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qZ0iKe8ecOE?si=rf3ahFnXm_ps0_Ei" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The RGB LED kit uses three sliders, or linear potentiometers, to control the intensity and color of the LED. Linear potentiometers control resistance through linear motion, and there are essentially three smaller LEDs in a dome. Each slider/potentiometer sends voltage to the LED/LEDs, and this causes different brightness and colors. This RGB LED kit is essentially soldering practice, and the person soldering can be burnt because metal conducts heat quite well (and the sliders are metal), however this can be resolved by using something to prop it up. 
