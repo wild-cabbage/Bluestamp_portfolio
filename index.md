@@ -26,6 +26,9 @@
 - [Modification 1: Specific function](#modification-1)
 - [Modification 2: Bluetooth Connection](#modification-2)
 
+## Final Product
+![drawing](robotcleanbg.png)
+
 
 
 
@@ -244,7 +247,7 @@ This above code sends numbers to the Arduino. The number is stored in a variable
 
 
 #### Challenges
-At first, when I first started testing the bluetooth between the phone and HC-05, the connection broke within the first five seconds, but the arm was working pretty well, so even though my research said it was that the HC-05 wasn't getting enough power, I didn't measure the power the batteries were giving. Then when I tested it the next day (since when I encountered the problem it was very late and I had to troubleshoot the next day), I noticed that the arm was wrapping itself in its own wires, a behavior that I observed every time it wasn't getting enough power from the batteries. First I measured the power coming from each individual battery, and they were sending enough; then I measured whether or not power was going through the coils, and power was going through. Lastly I measured whether or not the plastic connector was receiving anything, and it wasn't receiving anything. I realized the solders were probably broken, even though earlier when I looked at it the solders looked fine. I still cut the wires where it was soldered and then resoldered the wires together, and the problem was solved. 
+At first, when I first started testing the bluetooth between the phone and HC-05, the bluetooth connection always broke within the first five seconds, but the arm was working pretty well, so even though my research said it was that the HC-05 wasn't getting enough power, I didn't measure the power the batteries were giving. Then when I tested it the next day (since when I encountered the problem it was very late and I had to troubleshoot the next day), I noticed that the arm was wrapping itself in its own wires, a behavior that I observed every time it wasn't getting enough power from the batteries. First I measured the power coming from each individual battery, and they were sending enough; then I measured whether or not power was going through the coils, and power was going through. Lastly I measured whether or not the plastic connector was receiving anything, and it wasn't receiving anything. I realized the solders were probably broken, even though earlier when I looked at it the solders looked fine. I still cut the wires where it was soldered and then resoldered the wires together, and the problem was solved. 
 
 
 #### Final Code:
