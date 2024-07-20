@@ -21,7 +21,7 @@
 ## Overview
 - Starter Project: RGB Slider Kit
 - Milestone 1: Tested Joystick and Servos
-- Milestone 2: Completed Assembly
+- [Milestone 2: Completed Assembly](#final-milestone)
 - Milestone 3: Completed Programming
 - Modification 1: Specific function
 - Modification 2: Bluetooth Connection
